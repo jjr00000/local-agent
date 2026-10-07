@@ -77,3 +77,19 @@ python yolo_detect.py
 - 工程结构规范化 ✅
 - Git 版本控制 ✅
 - 完整文档与工程日志 ✅
+## 项目复现步骤
+1. 安装依赖
+```bash
+pip install -r requirements.txt
+python train.py
+python yolo_detect.py
+## AI 使用说明
+
+本项目使用 AI 作为辅助工具：借助 AI 编写 YOLO 训练、摄像头推理代码，辅助撰写 Markdown 文档、调试 git 命令，梳理项目思路。项目整体规划、代码校验、问题排查均由本人主导完成。
+
+## 项目结构说明
+
+本仓库包含两部分内容：
+
+- 根目录：YOLO 目标检测相关代码与文档（train.py、yolo_detect.py、report.md 等，为本轮二面 YOLO 实战任务）
+- src/、backend/、docs/ 文件夹：为本项目内本地大模型相关模块
