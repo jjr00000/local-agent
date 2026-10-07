@@ -1,0 +1,32 @@
+# Python缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+
+# 对话缓存文件
+chat_history.json
+
+# 模型权重、大文件
+*.gguf
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# YOLO训练输出、数据集
+datasets/
+runs/
+weights/
+
+# 图片资源
+*.jpg
+*.jpeg
+*.png
+*.bmp
+assets/tmp_*.jpg
+
+# 日志文件
+*.log
