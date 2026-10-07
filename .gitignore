@@ -30,3 +30,42 @@ assets/tmp_*.jpg
 
 # 日志文件
 *.log
+# 训练输出目录
+runs/
+# 数据集下载
+datasets/
+# python缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+# 虚拟环境
+venv/
+env/
+# 日志
+*.log
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# YOLO训练输出、权重、数据集
+runs/
+datasets/
+*.pt
+*.pth
+
+# 虚拟环境
+venv/
+env/
+.venv/
+
+# VSCode配置
+.vscode/
+*.ipynb_checkpoints
+
+# 系统文件
+.DS_Store
+Thumbs.db
