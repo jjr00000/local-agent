@@ -1,179 +1,85 @@
-# Local-Agent｜创智部二面实战项目
-> 人工智能协会创智部二面实战任务，本地大模型 + YOLO视觉多模态智能体
-
-##  项目简介
-基于LM Studio部署本地Qwen2.5-7B大模型，通过OpenAI兼容API接入Python CLI交互式应用。
-支持多轮上下文记忆、对话保存/加载，实现本地私有大模型对话。
-
-###  当前已实现功能
-1. 本地大模型多轮对话，支持上下文记忆
-2. 对话持久化：`save`保存会话 / `load`加载历史会话 / `exit`退出
-3. 模块化工程结构，Git版本管理
-4. 预留YOLO视觉检测接入接口
-
-##  环境依赖
-Python >=3.10
-```bash
-pip install -r requirements.txt
-
-python src/main.py
-README.md
-YOLOv8 实时目标检测项目 · 二面实战任务
-本项目为人工智能协会创智部二面实战任务，基于 Ultralytics YOLOv8 完成模型训练 + 摄像头实时推理部署，完整复现深度学习目标检测工程流程。
-项目全程使用 Git 版本控制，记录完整开发日志，结构整洁、可一键复现。
-   项目概述
-本项目基于 YOLOv8 轻量级检测模型，使用官方 coco128 小型数据集完成快速训练，生成专属权重文件 best.pt，最终实现本地摄像头实时目标检测。
-本项目完整覆盖二面实战要求：
--  完成 YOLO 实时推理部署（摄像头端）
--  完整工程化、规范化目录结构
--  Git 版本控制 + 规范提交记录
--  完整文档记录（README + 工程日志报告）
-   环境依赖
-Python 3.11 + Pytorch CPU + Ultralytics + OpenCV
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-pip install ultralytics opencv-python
-
-   项目目录结构
-local-agent/
-├── yolo_detect.py     # 摄像头实时检测主程序
-├── report.md          # 项目工程日志、实验记录、踩坑总结
-├── README.md          # 项目说明文档（本文件）
-├── .gitignore         # 忽略缓存、训练结果、大权重文件
-└── runs/              # 自动生成的训练结果（不上传仓库）
-
-  项目运行流程
-1. 模型训练
-使用 coco128 数据集快速训练 5 轮，生成最优权重 best.pt
-训练结果保存路径：runs/detect/train/weights/best.pt
-2. 实时摄像头推理
-运行摄像头检测程序：
-python yolo_detect.py
-
-- 自动打开本地摄像头
-- 实时检测画面目标、自动画框
-- 终端打印识别物体类别
-- 按 q 退出程序
-  实验结果与分析
-实验现象
-程序可正常启动、摄像头读取正常、模型推理正常。
-由于训练数据集仅 128 张图片，样本量极小，模型泛化能力弱，因此多数场景输出no detections，识别精度有限。
-问题复盘（工程日志核心）
-- 问题1：模型识别效果差
-  - 原因：coco128 数据集样本过少，模型泛化能力不足
-  - 解决：保留训练流程，作为标准教学演示流程，不强行追求高精度
-- 问题2：官方权重 yolov8n.pt 下载失败
-  - 原因：网络无法连接 GitHub 官方资源
-  - 解决：放弃在线下载，使用本地训练完成的 best.pt 权重，保证项目可离线运行
-改进方案
-- 使用更大规模 COCO 数据集训练，提升精度
-- 使用官方预训练权重 yolov8n.pt 迁移学习
-- 降低置信度阈值，提高检出率
-  项目实现思路（面试口述版）
-本次任务我选择 YOLOv8 目标检测方向完成二面实战。首先搭建完整 Python 深度学习环境，基于 Ultralytics 框架进行模型训练，使用轻量化 coco128 数据集快速迭代得到模型权重。随后编写摄像头实时推理代码，实现端侧实时检测。
-项目过程中我重点关注工程规范性，通过 Git 做版本管理，全程记录工程日志，整理清晰的 README 文档，保证项目可复现、可交接。同时主动分析模型缺陷、网络问题并给出合理取舍，保证项目流程完整、逻辑自洽。
- 任务完成度
-- YOLO 模型训练
-- 实时推理部署 
-- 工程结构规范化 
-- Git 版本控制 
-- 完整文档与工程日志 
-## 项目复现步骤
-1. 安装依赖
-```bash
-pip install -r requirements.txt
-python train.py
-python yolo_detect.py
-## AI 使用说明
-
-本项目使用 AI 作为辅助工具：借助 AI 编写 YOLO 训练、摄像头推理代码，辅助撰写 Markdown 文档、调试 git 命令，梳理项目思路。项目整体规划、代码校验、问题排查均由本人主导完成。
-
-## 项目结构说明
-
-本仓库包含两部分内容：
-
-- 根目录：YOLO 目标检测相关代码与文档（train.py、yolo_detect.py、report.md 等，为本轮二面 YOLO 实战任务）
-- src/、backend/、docs/ 文件夹：为本项目内本地大模型相关模块
-```
-# Local-Agent | 创智部二面实战项目任务四
-项目名称：华小牛 — 本地离线多模态智能体（Pi-Agent工具调用）
+# Local-Agent｜人工智能协会创智部二面实战项目
+> 本项目为创智部二面实战任务，实现本地大模型CLI对话、YOLO目标检测、Harness智能体调度框架与多模态视觉Agent创意作品。
 
 ## 项目简介
-本项目是人工智能协会创智部二面实战作品，实现了一个本地运行的AI智能体。
-- 大模型：LM Studio本地部署 Qwen2.5-1.5B GGUF，开启本地API服务，离线可用
-- 视觉模块：YOLOv8，调用电脑摄像头做实时目标检测
-- 架构：Pi-Agent 工具调用，大模型自主判断是否启用摄像头视觉工具
-- 交互：CLI命令行终端对话
+项目一共4个子任务：
+1. **Task1**：基于LM Studio部署本地大模型，搭建CLI命令行对话程序，支持多轮上下文记忆，会话保存与加载。
+2. **Task2**：YOLOv8 摄像头实时目标检测，本地离线图像识别。
+3. **Task4**：搭建Harness智能体调度框架，实现大模型的工具调用机制，作为任务调度核心。
+4. **Task5**：多模态创意作品，依托Harness框架，让大模型自主调用YOLO视觉工具，读取摄像头画面、理解场景并回答问题。
 
-工作流程：
-当用户提问和画面相关的内容（如“看看摄像头里有什么”），大模型自动调用camera_detect工具，读取摄像头画面，YOLO推理识别物体；识别结果返回给大模型，整理成自然语言回答。普通文字对话不会启动摄像头。
-
-## 环境依赖
-```bash
-pip install ultralytics opencv-python requests
+## 项目目录结构
 ```
 
-## 项目结构说明
-
-```
 local-agent/
-├── harness.py          # Agent主程序，工具调用逻辑 + CLI交互入口
-├── yolo_detect.py      # YOLO摄像头目标检测模块
-├── report.md           # 工程日志，记录开发卡点、进度与思考
-├── README.md           # 项目说明文档
-├── requirements.txt    # 项目依赖清单
-└── runs/               # YOLO训练实验文件，用于模型效果对比
+├── harness/            # Task4 Harness 多模态智能体调度主程序
+│   └── harness.py
+├── task1-llm/          # Task1 本地大模型 CLI 对话代码
+│   └── multi_modal_cli.py
+├── yolo-project/       # Task2 YOLO 目标检测相关代码、权重文件
+│   ├── train.py
+│   ├── yolo_detect.py
+│   └── yolov8n.pt
+├── docs/               # 各任务详细开发日志、踩坑记录、实验报告
+│   ├── task1.md
+│   ├── task2.md
+│   ├── task4.md
+│   └── task5.md
+├── assets/
+├── datasets/
+├── examples/
+├── runs/
+├── src/
+├── .gitignore
+├── README.md           # 本文件：项目总览与快速复现指南
+├── report.md
+└── requirements.txt
+```
+## 环境依赖
+Python >= 3.10
+一键安装全部依赖包：
+```
+bash
+pip install -r requirements.txt
 ```
 
-## 前置准备
+## 复现 & 运行步骤
 
-1. 安装 LM Studio，下载 `qwen2.5-1.5b` GGUF 模型，加载模型并启动本地 API 服务（默认地址：[http://127.0.0.1:1234/v1](http://127.0.0.1:1234/v1)）
-2. 电脑内置摄像头可用
+> 
+> 前置准备：打开 LM Studio，加载 GGUF 大模型，启动本地 API 服务（默认地址 `http://localhost:1234/v1`）
 
-## 项目复现步骤
+### Task1：本地大模型 CLI 对话
 
 ```
-# 安装依赖
-pip install ultralytics opencv-python requests
+cd task1-llm
+python multi_modal_cli.py
+```
 
-# 启动Agent交互程序
+### Task2：YOLO 摄像头目标检测
+
+```
+cd yolo-project
+python yolo_detect.py
+```
+
+### Task4 & Task5：Harness 智能体（工具调用 + 多模态联动）
+
+```
+cd harness
 python harness.py
 ```
 
-### AI 使用说明
+交互指令示例：
 
-本项目使用 AI 作为辅助工具：借助 AI 编写 YOLO 训练、摄像头推理代码，辅助撰写 Markdown 文档、调试 git 命令，梳理项目思路。项目整体规划、代码校验、问题排查均由本人主导完成。
+- 普通文字聊天：`你好，简单介绍一下自己`
+- 调用摄像头视觉识别：`看看摄像头里面有什么物体`
+- 退出程序：`exit`
 
-### 终端交互指令
+## 开发日志
 
-- `你好`：普通文字对话，不调用摄像头
-- `看看摄像头里有什么`：触发工具调用，使用 YOLO 识别摄像头画面物体
-- `exit`：退出程序
+每个任务详细开发过程、遇到的问题、调试记录、实验分析，全部放在 `docs/` 目录下：
 
-## 任务完成度
-
--  YOLO 模型训练
--  实时推理部署
--  工程结构规范化
--  Git 版本控制
--  完整文档与工程日志
-
-## 开发踩坑记录
-
-1. LM Studio API 调用时报 KeyError，原因是请求中 model 参数名称和加载的模型不匹配，修改为真实模型名称后解决。
-2. 初期使用自制小数据集训练的 YOLO 权重，泛化能力弱，经常无法识别人物；更换 COCO 预训练`yolov8n.pt`，检测效果大幅提升。
-3. YOLO 置信阈值 conf 过高容易漏检，下调至 0.15 降低漏检概率，代价是轻微增加误识别概率。
-4. Git 本地分支与远端仓库出现分支分叉，是因为多次 commit 后网络问题无法推送 GitHub，本地提交记录完好。
-
-## 项目亮点
-
-1. Pi-Agent 工具调用：大模型自主决策要不要调用摄像头，不是固定强制开启。
-2. 全流程本地离线运行，不需要在线大模型 API。
-3. 工程规范：使用 Git 做版本管理，每一步修改都附带清晰 commit 信息；配套工程日志记录调试全过程。
-4. 多模态能力：文字对话 + 摄像头实时视觉感知。
-
-## 后续优化方向
-
-1. 增加画面截图保存功能
-2. 优化提示词，让大模型描述画面内容更丰富自然
-3. 支持本地图片文件识别，不局限于实时摄像头
-4. 增加简易网页前端，替代 CLI 终端交互
+- docs/task1.md 任务 1 完整工程日志
+- docs/task2.md 任务 2 完整工程日志
+- docs/task4.md 任务 4 harness 智能体框架搭建记录
+- docs/task5.md 任务 5 创意作品开发记录
