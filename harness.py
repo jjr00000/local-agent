@@ -7,8 +7,8 @@ class AgentHarness:
         # 本地模型API（LM Studio）
         self.llm_url = "http://127.0.0.1:1234/v1/chat/completions"
         # YOLO视觉工具
-        self.yolo_model = YOLO("./runs/detect/train/weights/best.pt")
-        self.conf = 0.2
+        self.yolo_model = YOLO("yolov8n.pt")
+        self.conf = 0.15
         # 对话上下文
         self.messages = []
         # 工具注册表（Pi风格，技能插件池）
